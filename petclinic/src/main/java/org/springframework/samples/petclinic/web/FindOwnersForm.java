@@ -32,7 +32,6 @@ public class FindOwnersForm {
 	
 	private MessageService service = null;
 
-	@Reference
 	public void setMessageService(MessageService service) {
 		this.service = service;
 	}
