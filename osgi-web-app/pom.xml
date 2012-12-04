@@ -3,14 +3,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0    http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fi.eis.applications.jboss.poc</groupId>
+    <groupId>fi.eis.applications.jboss.poc.blueprint</groupId>
     <artifactId>osgi-web-app-blueprint</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>poc: osgi web app with blueprint</name>
     <description>poc: osgi web app with blueprint</description>
     <parent>
-      <groupId>fi.eis.applications.jboss.poc.parent</groupId>
+      <groupId>fi.eis.applications.jboss.poc.blueprint.parent</groupId>
       <artifactId>parent</artifactId>
       <version>0.0.1</version>
     </parent>
@@ -38,7 +38,7 @@
       </dependency>
       <!-- our client interfaces -->
       <dependency>
-        <groupId>fi.eis.applications.jboss.poc</groupId>
+        <groupId>fi.eis.applications.jboss.poc.blueprint</groupId>
         <artifactId>osgi-simple-service-api</artifactId>
         <scope>provided</scope>
       </dependency>      

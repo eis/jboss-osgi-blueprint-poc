@@ -5,7 +5,7 @@
   <name>JBoss AS 7 OSGi POC</name>
   <description>JBoss AS 7 OSGi poc</description>
 
-  <groupId>fi.eis.applications.jboss.poc.parent</groupId>
+  <groupId>fi.eis.applications.jboss.poc.blueprint.parent</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1</version>
@@ -35,32 +35,19 @@
     <maven.compiler.source>1.6</maven.compiler.source>
   </properties>
   <modules>
-    <module>noosgi-ejb</module>
-    <module>noosgi-web-app</module>
     <module>osgi-simple-service</module>
-    <module>osgi-simple-blueprint-service</module>
-	<module>osgi-simple-jndi-service</module>
-    <module>osgi-simple-jta-service</module>
     <module>osgi-simple-service-api</module>
     <module>osgi-web-app</module>
-    <module>osgi-web-app-blueprint</module>
 	<module>petclinic</module>
-	<module>petclinic-blueprint</module>
   </modules>
 
   <dependencyManagement>
     <dependencies>
       <!-- our client interfaces -->
       <dependency>
-        <groupId>fi.eis.applications.jboss.poc</groupId>
+        <groupId>fi.eis.applications.jboss.poc.blueprint</groupId>
         <artifactId>osgi-simple-service-api</artifactId>
         <version>0.0.2</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
-        <groupId>fi.eis.applications.jboss.poc</groupId>
-        <artifactId>ejb-no-osgi</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
         <scope>provided</scope>
       </dependency>
 
