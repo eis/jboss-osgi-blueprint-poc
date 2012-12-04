@@ -1,5 +1,6 @@
 package fi.eis.applications.jboss.poc.wab;
 
+import org.jboss.logging.Logger;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
@@ -7,6 +8,8 @@ import org.osgi.util.tracker.ServiceTracker;
 
 public class HttpServiceTracker extends ServiceTracker {
 
+  private static Logger log = Logger.getLogger(HttpServiceTracker.class);	
+	
   public HttpServiceTracker(final BundleContext context) {
     super(context, HttpService.class.getName(), null);
   }
@@ -18,7 +21,7 @@ public class HttpServiceTracker extends ServiceTracker {
       return null;
 
     try {
-      System.out.println("Registering servlet at /hi_to_osgi");
+    	log.debug("Registering servlet at /hi_to_osgi");
       httpService.registerServlet("/hi_to_osgi",
           new AnotherHelloWorldServlet(), null, null);
     } catch (Exception e) {
@@ -33,7 +36,7 @@ public class HttpServiceTracker extends ServiceTracker {
       final Object service) {
     HttpService httpService = (HttpService) service;
 
-    System.out.println("Unregistering /hi_to_osgi");
+    log.debug("Unregistering /hi_to_osgi");
     httpService.unregister("/hi_to_osgi");
 
     super.removedService(reference, service);

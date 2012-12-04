@@ -76,12 +76,13 @@
                         <Import-Package>
                           fi.eis.applications.jboss.poc.osgiservice.api,
                           javax.annotation,
-                          javax.servlet;version="[2.5,2.5]",
-                          javax.servlet.http;version="[2.5,2.5]",
-                          org.osgi.util.tracker,
+                          javax.servlet;version="[2.5,3.0]",
+                          javax.servlet.http;version="[2.5,3.0]",
                           org.osgi.service.http,
                           org.osgi.framework;version="[1.5,2.0)",
-                          org.jboss.logging;version="[3.0,4.0)"
+                          org.osgi.service.blueprint,
+                          org.jboss.logging;version="[3.0,4.0)",
+                          org.osgi.util.tracker
                         </Import-Package>
                         <Export-Package>fi.eis.applications.jboss.poc.wab</Export-Package>
                         <Private-Package />
