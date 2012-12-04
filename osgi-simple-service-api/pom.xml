@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0    http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fi.eis.applications.jboss.poc</groupId>
+    <artifactId>osgi-simple-service-api</artifactId>
+    <version>0.0.2</version>
+    <packaging>bundle</packaging>
+    <name>poc: simple osgi service api</name>
+    <description>poc: simple osgi service api</description>
+    <parent>
+      <groupId>fi.eis.applications.jboss.poc.parent</groupId>
+      <artifactId>parent</artifactId>
+      <version>0.0.1</version>
+    </parent>
+    <properties>
+        <version.bundle>0.0.2</version.bundle>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- This plugin takes care of packaging the artifact as
+                    an OSGi Bundle -->
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${version.bundle.plugin}</version>
+                <extensions>true</extensions>
+                <configuration>
+                <instructions>
+                  <Bundle-SymbolicName>${artifactId}</Bundle-SymbolicName>
+                  <Bundle-Version>${version.bundle}</Bundle-Version>
+                  <Export-Package>
+                    fi.eis.applications.jboss.poc.osgiservice.api;version=${version.bundle}
+                  </Export-Package>
+                  <Import-Package>
+                    org.osgi.framework;version="[1.5,2.0)"
+                  </Import-Package>
+                 </instructions>
+                </configuration>
+            </plugin>
+
+            <!-- JBoss AS plugin to deploy artifact -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <configuration>
+                    <filename>${project.build.finalName}.jar</filename>
+                </configuration>
+            </plugin>
+
+            <!-- Compiler plugin enforces Java 1.6 compatibility to remove
+                unnecessary warnings about execution environment in IDE -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
