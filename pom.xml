@@ -36,9 +36,10 @@
   </properties>
   <modules>
     <module>osgi-simple-service</module>
+	<module>osgi-simple-jndi-service</module>
     <module>osgi-simple-service-api</module>
     <module>osgi-web-app</module>
-	<module>petclinic</module>
+	<!-- <module>petclinic</module>-->
   </modules>
 
   <dependencyManagement>

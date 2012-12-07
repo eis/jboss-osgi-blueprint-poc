@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+    <bean id="simplejndiservice" class="fi.eis.applications.jboss.poc.osgiservice.blueprint.jndi.SimpleJNDIServiceBean"/>
+
+    <service ref="simplejndiservice" interface="fi.eis.applications.jboss.poc.osgiservice.api.MessageService"
+             depends-on="jndiService">
+    </service>
+
+    <reference id="jndiService" interface="org.osgi.service.jndi.JNDIContextManager"
+        availability="mandatory">
+        <reference-listener bind-method="bindJNDIService" unbind-method="unbindJNDIService">
+            <ref component-id="simplejndiservice"/>
+        </reference-listener>
+    </reference>
+
+</blueprint>
