@@ -19,21 +19,26 @@
     <dependencies>
         <!-- OSGi -->
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <scope>provided</scope>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.core</artifactId>
+          <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-            <scope>provided</scope>
+          <groupId>org.osgi</groupId>
+          <artifactId>org.osgi.compendium</artifactId>
+          <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>org.osgi</groupId>
           <artifactId>org.osgi.enterprise</artifactId>
-          <version>4.2.0</version>
           <scope>provided</scope>
         </dependency>
+        <!-- JBoss -->
+        <dependency>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+          <scope>provided</scope>
+        </dependency>        
         <!--  client API -->
         <dependency>
           <groupId>fi.eis.applications.jboss.poc.blueprint</groupId>
@@ -51,6 +56,9 @@
                     <instructions>
                         <Import-Package><![CDATA[
                                 fi.eis.applications.jboss.poc.osgiservice.api;version="[0.0,1.0)",
+                                javax.naming,
+                                javax.sql,
+                                org.jboss.logging,
                                 org.osgi*
                         ]]></Import-Package>
                         <Private-Package><![CDATA[
@@ -59,6 +67,14 @@
                     </instructions>
                 </configuration>
             </plugin>
+            <!-- JBoss AS plugin to deploy war -->
+	        <plugin>
+	           <groupId>org.jboss.as.plugins</groupId>
+	           <artifactId>jboss-as-maven-plugin</artifactId>
+                <configuration>
+                    <filename>${project.build.finalName}.jar</filename>
+                </configuration>
+	        </plugin>            
         </plugins>
     </build>
 
